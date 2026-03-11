@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Contact Us</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+#logo{
+    position: relative;
+    height: 120px;
+    top:10px;
+    left: 60px;
+    margin: 17px;
+    z-index: 100;
+}
+
+nav{
+    justify-content: space-between;
+    z-index: 100;
+    align-items: center;
+    position: fixed;
+    top: -10px;
+    display: flex;
+    height: 164px;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.553);
+    backdrop-filter: blur(5px);
+    border-bottom: 8px solid rgb(216, 112, 183);
+    box-shadow: -5px 7px 50px rgba(216, 112, 183, 0.534) ;
+    transition: backdrop-filter ease-in-out 0.3s ,background-color ease-in-out 0.5s ,transform ease-in-out 0.3s, top 0.3s ease-in-out, box-shadow ease-in-out 0.5s;
+}
+
+nav:hover{
+    background-color: rgba(128, 128, 128, 0.688);
+    backdrop-filter: blur(10px);
+    transform: scale(1.01);
+    top: 0px;
+    box-shadow: -5px 30px 50px rgb(216, 112, 183) ;
+}
+
+#school{
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    text-align-last: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    position: absolute;
+    top: 40px;
+    left: 210px;
+}
+
+nav h1{
+    position: absolute;
+    scale: 1.8;
+    top: 50px;
+    left: 550px;
+}
+
+#choices ul{
+  width: 800px;
+  height: 50px;
+  display: flex;
+  list-style-type: none;
+  padding:0;                
+  margin-right: -50px;          
+  align-items: center;       
+  justify-content: center;   
+  gap: 10px;     
+  float: right;            
+}
+
+#choices ul li{
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    width: 110px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-family:Arial, Helvetica, sans-serif ;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#choices ul li:hover{
+    transform: scale(1.1);
+}
+
+#choices ul li::after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    top: 33px;
+    background-color: rgb(216, 112, 183);
+    transition: 0.3s;
+    transition-timing-function: easy-in-out;
+    transform: scaleX(0)
+}
+#choices ul li:hover::after
+{
+    transform: scaleX(1)}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+*{
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin:0;
+    background:#c4c4c4;
+    color:#333;
+}
+
+.section{
+    max-width:1200px;
+    margin:60px auto;
+    padding:20px;
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.section h1{
+    width:400px;
+    text-align:center;
+    letter-spacing:4px;
+    font-size:48px;
+    padding: 15px;
+    background-color: #c4c4c4;
+    border-radius:20px ;
+    margin-bottom:60px;
+    position: relative;
+}
+.section h1::after{
+content: '';
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    top:50%;
+    left: 50%;
+    z-index: -1;
+    background-image: conic-gradient(from var(--angle),rgb(204, 0, 255), rgb(255, 0, 221), rgb(255, 0, 187), rgb(204, 0, 255));
+    animation: 3s spin linear infinite;
+    translate:-50% -50%;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    width: 100%;
+}
+
+.section h2{
+    font-size:20px;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    font-weight:bold;
+    font-size:13px;
+    margin-bottom:5px;
+    letter-spacing:1px;
+}
+
+input, textarea{
+    padding:14px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+textarea{
+    height:140px;
+    resize:none;
+}
+
+button{
+    margin-top:25px;
+    padding:16px;
+    background:#7a7a7a;
+    color:#fff;
+    border:none;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    width:60%;
+    position: relative;
+    transition: 0.3s ease-in-out;
+}
+
+button::after,button::before{
+    content: '';
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    padding: 7px;
+    top:50%;
+    left: 50%;
+    z-index: -1;
+    background-image: conic-gradient(from var(--angle),rgb(204, 0, 255), rgb(255, 0, 221), rgb(255, 0, 187), rgb(204, 0, 255));
+    animation: 3s spin linear infinite;
+    translate:-50% -50%;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+button::before{
+    filter: blur(1.1rem);
+}
+
+button:hover::after,button:hover::before{
+    opacity: 1;
+}
+
+button:hover{
+    background:#c674c3;
+}
+
+.map iframe{
+    width:100%;
+    height:450px;
+    border:0;
+}
+
+.bottom-contact{
+    margin-top:120px;
+    text-align:center;
+}
+
+.bottom-contact h2{
+    font-size:32px;
+    letter-spacing:3px;
+    margin-bottom:20px;
+    animation: trans linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 30%;
+}
+
+.bottom-social{
+    margin-bottom:30px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 30%;
+}
+
+.bottom-social a{
+    text-decoration:none;
+    margin:0 8px;
+    background:#333;
+    color:white;
+    padding:12px;
+    border-radius:50%;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.bottom-social a:hover{
+    background:#c674c3;
+}
+
+.bottom-cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.bottom-card{
+    background:white;
+    width:280px;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 30%;
+}
+
+.bottom-card i{
+    font-size:22px;
+    background:#eee;
+    padding:12px;
+    border-radius:50%;
+    margin-bottom:10px;
+}
+
+.bottom-card h3{
+    margin:10px 0;
+}
+
+/*bottom header*/
+
+#QL a{
+    font-size: 20px;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+} 
+
+#QL H3{
+    font-size: 25px;
+    padding-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#CU h3, i, p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#CU{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    color: #fff;
+}
+
+#bottom_header{
+    background-color: pink;
+    width: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items:center ;
+    justify-content: center ;
+    gap: 80px;
+}
+
+#bottom_header img{
+    width: 200px;
+}
+
+#QL{
+    display: flex;
+    flex-direction: column;
+}
+
+#end{
+    display: flex;
+    position: relative;
+
+    align-items: center;
+    justify-content: center;
+    background-color: palevioletred;
+    height: 35px;
+}
+
+#end p{
+     font-size:15px ;
+}
+
+/*animation*/
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+
+@keyframes appear{
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+
+}
+
+
+@keyframes trans{
+    from{
+        opacity: 0;
+        transform: translate(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+@media(max-width:900px){
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+        <div>
+            <a href="mainpage.html">
+                <img id="logo" src="img-video/logo.png" alt="logo">
+                <h2 id="school">Francisco G. Nepomoceno<br>Memorial High School</h2>
+                <h1>SHS</h1>
+            </a>
+        </div>
+        <div id="choices">
+            <ul>
+                <li><a href="mainpage.html">Home</a></li>
+                <li><a href="about_us.html">About us</a></li>
+                <li><a href="STRANDS.HTML">Strands</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="enrollment.html">Enroll</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="section">
+
+    <h1>Contact Us</h1>
+
+    <div class="contact-grid">
+
+        <div>
+            <h2>GOT QUESTIONS AND INQUIRIES?</h2>
+
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>FIRST NAME</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label>LAST NAME</label>
+                        <input type="text" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>CONTACT NUMBER</label>
+                        <input type="text" placeholder="Contact Number">
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL ADDRESS</label>
+                        <input type="email" placeholder="Email Address">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>MESSAGE</label>
+                    <textarea placeholder="Message"></textarea>
+                </div>
+
+                <button type="submit">SUBMIT FORM</button>
+            </form>
+        </div>
+
+        <div>
+            <h2>HOW TO GET HERE?</h2>
+
+            <div class="map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.110733634656!2d120.60638497349326!3d15.15226218540209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f21abd9df171%3A0x494aa8f8a06ef1cf!2sFrancisco%20G.%20Nepomuceno%20Memorial%20High%20School!5e0!3m2!1sen!2sph!4v1772150974991!5m2!1sen!2sph"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+  
+    <div class="bottom-contact">
+
+        <h2>GET IN TOUCH</h2>
+
+<div class="bottom-social">
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+        </div>
+
+        <div class="bottom-cards">
+            
+            <div class="bottom-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>fgnepomuceno.mhs
+                @depedangelascity.com</p>
+            </div>
+            
+            <div class="bottom-card">
+                <i class="fab fa-twitter"></i>
+                <h3>Twitter</h3>
+                <p>twitter.com/fgnmhs92</p>
+            </div>
+            
+            <div class="bottom-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Our Location</h3>
+                <p>Citicenter, Pandan-Tabun Road, Barangay Pandan, Angeles City, Pampanga, 2009 Philippines</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<footer>
+<div id="bottom_header">
+  <Div>
+  <img src="img-video/logo.png">
+  <H1>FGNMHS-SHS</H1>
+  </Div>
+
+  <div id="QL">
+    <H3>Quick Links</h3>
+    <a href="mainpage.html">HOME</a>
+    <a href="about_us.html">ABOUT US</a>
+    <a href="contacts.html">CONTACT</a>
+    <a href="STRANDS.HTML">STRANDS</a>
+    <a href="enrollment.html">ENROLL</a>
+  </div>
+  
+  <div ID="CU">
+    <H3>Contact Us</H3>
+    <p>Citicenter, Brgy. Pandan 2009 Angeles City, <br>Philippines</p>
+    <p>fgnmhs.seniorhs@depedangelescity.com</p>
+    <div>
+      <i class="fa-brands fa-facebook"></i>
+    </div>
+  </div>
+</div>
+
+<div id="end">
+  <p>Copyright © 2026 Francisco • All Rights Reserved</p>
+</div>
+</footer>
+
+
+</body>
+</htm

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="enrollment_css.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment - FGNMHS</title>
+</head>
+<body>
+    <nav id="navbar">
+        <div>
+            <a href="mainpage.html">
+                <img id="logo" src="img-video/logo.png" alt="logo">
+                <h2 id="school">Francisco G. Nepomoceno<br>Memorial High School</h2>
+                <h1>SHS</h1>
+            </a>
+        </div>
+        <div id="choices">
+            <ul>
+                <li><a href="mainpage.html">Home</a></li>
+                <li><a href="about_us.html">About us</a></li>
+                <li><a href="STRANDS.HTML">Strands</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="enrollment.html">Enroll</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div id="bgimage">
+        <img src="img-video/enroll_img/enroll (1).jpg" alt="">
+        </div>
+        <h1>JOIN US</h1>
+    </header>
+
+    <section id="options">
+        <div>
+            <a href="#" onclick="showForm('enrollment'); return false;">
+                <div id="image">
+                    <img src="img-video/enroll_img/enroll.png">
+                </div>
+                <h2>ENROLL NOW</h2>
+            </a>
+        </div>
+
+        <div>
+            <a href="#" onclick="showForm('early'); return false;">
+                <div id="image">
+                    <img src="img-video/enroll_img/early registration.jpg">
+                </div>
+                <h2>EARLY REGISTRATION</h2>
+            </a>
+        </div>
+    </section>
+
+    <div id="forms-container">
+        <div id="early-form" class="form-wrapper" style="display: none;">
+            <div class="form-header">
+                <h2>BASIC EDUCATION EARLY REGISTRATION FORM</h2>
+                <p class="form-note">THIS FORM IS NOT FOR SALE</p>
+                <button class="close-btn" onclick="hideForms()">&times;</button>
+            </div>
+
+            <div class="instructions">
+                <p><strong>Instructions:</strong> Print legibly all information required in CAPITAL letters and check all appropriate boxes. Submit accomplished form to the Person-in-Charge/Registrar/Class Adviser. Use black or blue pen only.</p>
+            </div>
+
+            <form id="earlyRegForm" onsubmit="submitForm(event, 'early')">
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>1. School Year</label>
+                            <input type="text" name="schoolYear" placeholder="e.g., 2025-2026" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Learner Reference No. (LRN), if applicable:</label>
+                            <input type="text" name="lrn">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>2. Grade Level to Enroll:</label>
+                            <input type="text" name="gradeLevel" required>
+                            <small>(For SHS) Track & Strand:</small>
+                            <input type="text" name="trackStrand">
+                        </div>
+                        <div class="form-group">
+                            <label>For Kindergarten Enrollees:</label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="earlyLearning" value="yes">
+                                Does the learner have attended any Early Learning Program? If yes, specify:
+                            </label>
+                            <input type="text" name="earlyLearningDetail" placeholder="Please specify">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Learner's Personal Information</h3>
+                    
+                    <label>Learner's Name:</label>
+                    <div class="name-row">
+                        <input type="text" name="lastName" placeholder="(Last Name)" required>
+                        <input type="text" name="firstName" placeholder="(First Name)" required>
+                        <input type="text" name="middleName" placeholder="(Middle Name)">
+                        <input type="text" name="extensionName" placeholder="(Extn. Name, if any)">
+                    </div>
+
+                    <div class="form-row four-col">
+                        <div class="form-group">
+                            <label>Birthdate (mm/dd/yyyy):</label>
+                            <input type="date" name="birthdate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Age:</label>
+                            <input type="number" name="age">
+                        </div>
+                        <div class="form-group">
+                            <label>Sex:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="sex" value="Male" required> Male</label>
+                                <label><input type="radio" name="sex" value="Female"> Female</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Religion:</label>
+                            <input type="text" name="religion">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Belonging to any Indigenous Peoples (IP) / Indigenous Cultural Community?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="indigenous" value="no" checked> No</label>
+                            <label><input type="radio" name="indigenous" value="yes"> If yes, please specify:</label>
+                            <input type="text" name="indigenousDetail" class="inline-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is the learner a person with disability (PWD)?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="pwd" value="no" checked> No</label>
+                            <label><input type="radio" name="pwd" value="yes"> If yes, please specify:</label>
+                            <input type="text" name="pwdDetail" class="inline-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Address:</label>
+                        <div class="address-row">
+                            <input type="text" name="houseNo" placeholder="House No.">
+                            <input type="text" name="sitioStreet" placeholder="Sitio/Street">
+                            <input type="text" name="barangay" placeholder="Barangay">
+                            <input type="text" name="municipality" placeholder="Municipality/City">
+                            <input type="text" name="province" placeholder="Province">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Parent/Guardian Information</h3>
+                    
+                    <label>Father's Name:</label>
+                    <div class="name-row">
+                        <input type="text" name="fatherLast" placeholder="(Last Name)">
+                        <input type="text" name="fatherFirst" placeholder="(First Name)">
+                        <input type="text" name="fatherMiddle" placeholder="(Middle Name)">
+                        <input type="text" name="fatherExt" placeholder="(Extn. Name, if any)">
+                    </div>
+
+                    <label>Mother's Maiden Name:</label>
+                    <div class="name-row">
+                        <input type="text" name="motherLast" placeholder="(Last Name)">
+                        <input type="text" name="motherFirst" placeholder="(First Name)">
+                        <input type="text" name="motherMiddle" placeholder="(Middle Name)">
+                        <input type="text" name="motherExt" placeholder="(Extn. Name, if any)">
+                    </div>
+
+                    <label>Legal Guardian's Name:</label>
+                    <div class="name-row">
+                        <input type="text" name="guardianLast" placeholder="(Last Name)">
+                        <input type="text" name="guardianFirst" placeholder="(First Name)">
+                        <input type="text" name="guardianMiddle" placeholder="(Middle Name)">
+                        <input type="text" name="guardianExt" placeholder="(Extn. Name, if any)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contact Number:</label>
+                        <input type="tel" name="contactNumber" class="short-input" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <p class="cert-text">I hereby certify that the above information given are true and correct to the best of my knowledge and I allow the Department of Education to process the learner's personal information for the purpose of early registration. The personal information herein shall be treated as confidential in compliance with the Data Privacy Act of 2012.</p>
+                    
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Signature Over Printed Name of Parent/Guardian</label>
+                            <input type="text" name="parentSignature" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" name="signatureDate">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn-submit">Submit Form</button>
+                    <button type="button" class="btn-print" onclick="printForm('early-form')">Print Form</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="enrollment-form" class="form-wrapper" style="display: none;">
+            <div class="form-header">
+                <h2>BASIC EDUCATION ENROLLMENT FORM</h2>
+                <p class="form-note">THIS FORM IS NOT FOR SALE</p>
+                <button class="close-btn" onclick="hideForms()">&times;</button>
+            </div>
+
+            <div class="instructions">
+                <p><strong>Instructions:</strong> Print legibly all information required in CAPITAL letters and check all appropriate boxes. Submit accomplished form to the Person-in-Charge/Registrar/Class Adviser. Use black or blue pen only.</p>
+            </div>
+
+            <form id="enrollmentForm" onsubmit="submitForm(event, 'enrollment')">
+
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>1. School Year</label>
+                            <input type="text" name="schoolYear" placeholder="e.g., 2025-2026" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Learner Reference No. (LRN), if applicable:</label>
+                            <input type="text" name="lrn">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>2. Grade Level to Enroll:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="gradeType" value="graded" checked> Graded, specify Grade Level</label>
+                                <input type="text" name="gradeLevel">
+                                <label><input type="radio" name="gradeType" value="non-graded"> Non-Graded (For Special Needs Education Only)</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>For Kindergarten Enrollees:</label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="earlyLearning" value="yes">
+                                Does the learner have attended any Early Learning Program? If yes, specify:
+                            </label>
+                            <input type="text" name="earlyLearningDetail" placeholder="Please specify">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Learner's Personal Information</h3>
+                    
+                    <div class="form-group">
+                        <label>PSA Birth Certificate No. (If available upon registration):</label>
+                        <input type="text" name="psaBirthCert">
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Birthdate (mm/dd/yyyy):</label>
+                            <input type="date" name="birthdate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstName" required>
+                        </div>
+                        <div class="form-row two-col inner">
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" name="age">
+                            </div>
+                            <div class="form-group">
+                                <label>Sex</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="sex" value="Male" required> Male</label>
+                                    <label><input type="radio" name="sex" value="Female"> Female</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text" name="middleName">
+                        </div>
+                        <div class="form-group">
+                            <label>Place of Birth (Municipality/City):</label>
+                            <input type="text" name="placeOfBirth">
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Extension Name e.g. Jr., III (if applicable):</label>
+                            <input type="text" name="extensionName">
+                        </div>
+                        <div class="form-group">
+                            <label>Religion:</label>
+                            <input type="text" name="religion">
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Belonging to any Indigenous Peoples (IP) Community?</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="indigenous" value="yes"> Yes</label>
+                                <label><input type="radio" name="indigenous" value="no" checked> No</label>
+                                <input type="text" name="indigenousDetail" placeholder="If Yes, please specify:" class="inline-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mother Tongue:</label>
+                            <input type="text" name="motherTongue">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is your family a beneficiary of 4Ps?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="fourPs" value="yes"> Yes</label>
+                            <label><input type="radio" name="fourPs" value="no" checked> No</label>
+                        </div>
+                        <input type="text" name="fourPsId" placeholder="If Yes, please write the 4Ps Household ID Number:" class="conditional-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Address:</label>
+                        <div class="address-row six-col">
+                            <input type="text" name="currHouseNo" placeholder="House No.">
+                            <input type="text" name="currSitio" placeholder="Sitio/Street Name">
+                            <input type="text" name="currBarangay" placeholder="Barangay">
+                            <input type="text" name="currMunicipality" placeholder="Municipality/City">
+                            <input type="text" name="currProvince" placeholder="Province">
+                            <input type="text" name="currCountry" placeholder="Country" value="Philippines">
+                        </div>
+                        <input type="text" name="currZip" placeholder="Zip Code" class="short-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permanent Address:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="sameAddress" value="yes" checked> Same with your Current Address?</label>
+                            <label><input type="radio" name="sameAddress" value="no"> No</label>
+                        </div>
+                        <div class="conditional-address">
+                            <div class="address-row six-col">
+                                <input type="text" name="permHouseNo" placeholder="House No.">
+                                <input type="text" name="permSitio" placeholder="Sitio/Street Name">
+                                <input type="text" name="permBarangay" placeholder="Barangay">
+                                <input type="text" name="permMunicipality" placeholder="Municipality/City">
+                                <input type="text" name="permProvince" placeholder="Province">
+                                <input type="text" name="permCountry" placeholder="Country" value="Philippines">
+                            </div>
+                            <input type="text" name="permZip" placeholder="Zip Code" class="short-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>4. Parent/Guardian's Information</h3>
+                    
+                    <label>Father's Name:</label>
+                    <div class="name-row four-col">
+                        <input type="text" name="fatherLast" placeholder="Last Name">
+                        <input type="text" name="fatherFirst" placeholder="First Name">
+                        <input type="text" name="fatherMiddle" placeholder="Middle Name">
+                        <input type="tel" name="fatherContact" placeholder="Contact Number">
+                    </div>
+
+                    <label>Mother's Maiden Name:</label>
+                    <div class="name-row four-col">
+                        <input type="text" name="motherLast" placeholder="Last Name">
+                        <input type="text" name="motherFirst" placeholder="First Name">
+                        <input type="text" name="motherMiddle" placeholder="Middle Name">
+                        <input type="tel" name="motherContact" placeholder="Contact Number">
+                    </div>
+
+                    <label>Legal Guardian's Name:</label>
+                    <div class="name-row four-col">
+                        <input type="text" name="guardianLast" placeholder="Last Name">
+                        <input type="text" name="guardianFirst" placeholder="First Name">
+                        <input type="text" name="guardianMiddle" placeholder="Middle Name">
+                        <input type="tel" name="guardianContact" placeholder="Contact Number">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>5. Is the Learner under the Special Needs Education Program?</h3>
+                    <div class="radio-group">
+                        <label><input type="radio" name="specialNeeds" value="yes"> Yes</label>
+                        <label><input type="radio" name="specialNeeds" value="no" checked> No</label>
+                    </div>
+                    <p class="sub-note">If Yes, check only 1, either from a1 or a2</p>
+
+                    <div class="conditional-section">
+                        <label class="sub-label">a1. With Diagnosis from Licensed Medical Specialist:</label>
+                        <div class="checkbox-grid">
+                            <label><input type="checkbox" name="diagnosis" value="ADHD"> Attention Deficit/Hyperactivity Disorder</label>
+                            <label><input type="checkbox" name="diagnosis" value="Autism"> Autism Spectrum Disorder</label>
+                            <label><input type="checkbox" name="diagnosis" value="CerebralPalsy"> Cerebral Palsy</label>
+                            <label><input type="checkbox" name="diagnosis" value="Emotional"> Emotional-Behavioral Disorder</label>
+                            <label><input type="checkbox" name="diagnosis" value="Hearing"> Hearing Impairment</label>
+                            <label><input type="checkbox" name="diagnosis" value="Intellectual"> Intellectual Disability</label>
+                            <label><input type="checkbox" name="diagnosis" value="Learning"> Learning Disability</label>
+                            <label><input type="checkbox" name="diagnosis" value="Multiple"> Multiple Disabilities</label>
+                            <label><input type="checkbox" name="diagnosis" value="Orthopedic"> Orthopedic/Physical Handicap</label>
+                            <label><input type="checkbox" name="diagnosis" value="Speech"> Speech/Language Disorder</label>
+                            <label><input type="checkbox" name="diagnosis" value="HealthProblem"> Special Health Problem/Chronic Disease</label>
+                            <label><input type="checkbox" name="diagnosis" value="Visual"> Visual Impairment</label>
+                        </div>
+
+                        <label class="sub-label">a2. With Manifestations:</label>
+                        <div class="checkbox-grid">
+                            <label><input type="checkbox" name="manifestation" value="ApplyingKnowledge"> Difficulty in Applying Knowledge</label>
+                            <label><input type="checkbox" name="manifestation" value="Communicating"> Difficulty in Communicating</label>
+                            <label><input type="checkbox" name="manifestation" value="Behavior"> Difficulty in Controlling Behavior</label>
+                            <label><input type="checkbox" name="manifestation" value="Hearing"> Difficulty in Hearing</label>
+                            <label><input type="checkbox" name="manifestation" value="Mobility"> Difficulty in Mobility</label>
+                            <label><input type="checkbox" name="manifestation" value="Adaptive"> Difficulty in Performing Adaptive Skills</label>
+                            <label><input type="checkbox" name="manifestation" value="Remembering"> Difficulty in Remembering, Concentrating</label>
+                            <label><input type="checkbox" name="manifestation" value="Seeing"> Difficulty in Seeing</label>
+                        </div>
+
+                        <label class="sub-label">b. Does the Learner have a PWD ID?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="pwdId" value="yes"> Yes</label>
+                            <label><input type="radio" name="pwdId" value="no" checked> No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>6. For Returning Learner (Balik-Aral) and those who will Transfer/Move In</h3>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="returningLearner" value="yes">
+                        Check if applicable
+                    </label>
+                    <div class="conditional-grid">
+                        <div class="form-group">
+                            <label>Last Grade Level Completed:</label>
+                            <input type="text" name="lastGradeCompleted">
+                        </div>
+                        <div class="form-group">
+                            <label>Last School Year Completed:</label>
+                            <input type="text" name="lastSchoolYear">
+                        </div>
+                        <div class="form-group">
+                            <label>Last School Attended:</label>
+                            <input type="text" name="lastSchool">
+                        </div>
+                        <div class="form-group">
+                            <label>School ID:</label>
+                            <input type="text" name="prevSchoolId">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>7. For Learner in Senior High School</h3>
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            <label>Semester:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="semester" value="1st"> 1st</label>
+                                <label><input type="radio" name="semester" value="2nd"> 2nd</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Track:</label>
+                            <input type="text" name="track">
+                        </div>
+                        <div class="form-group">
+                            <label>Strand:</label>
+                            <input type="text" name="strand">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-section">
+                    <h3>8. Preferred Distance Learning Modalities</h3>
+                    <p class="sub-note">If the school will implement other distance learning modalities aside from face-to-face instruction, what would you prefer for your child? Check all that applies:</p>
+                    <div class="checkbox-grid">
+                        <label><input type="checkbox" name="distanceLearning" value="Blended"> Blended (Combination)</label>
+                        <label><input type="checkbox" name="distanceLearning" value="Homeschooling"> Homeschooling</label>
+                        <label><input type="checkbox" name="distanceLearning" value="ModularPrint"> Modular (Print)</label>
+                        <label><input type="checkbox" name="distanceLearning" value="ModularDigital"> Modular (Digital)</label>
+                        <label><input type="checkbox" name="distanceLearning" value="Online"> Online</label>
+                        <label><input type="checkbox" name="distanceLearning" value="RadioTV"> Radio-Based Television</label>
+                        <label><input type="checkbox" name="distanceLearning" value="EduTV"> Educational Television</label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <p class="cert-text">I hereby certify that the above information given are true and correct to the best of my knowledge and I allow the Department of Education to process the learner's personal information to create and/or update his/her learner profile in the Learner Information System.</p>
+                    <p class="cert-text">The personal information herein shall be treated as confidential in compliance with the Data Privacy Act of 2012.</p>
+                    
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Signature Over Printed Name of Parent/Guardian</label>
+                            <input type="text" name="parentSignature" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" name="signatureDate">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn-submit">Submit Form</button>
+                    <button type="button" class="btn-print" onclick="printForm('enrollment-form')">Print Form</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div id="bottom_header">
+            <div>
+                <img src="img-video/logo.png">
+                <h1>FGNMHS-SHS</h1>
+            </div>
+
+            <div id="QL">
+                <h3>Quick Links</h3>
+                <a href="mainpage.html">HOME</a>
+                <a href="about_us.html">ABOUT US</a>
+                <a href="contacts.html">CONTACT</a>
+                <a href="STRANDS.HTML">STRANDS</a>
+                <a href="enrollment.html">ENROLL</a>
+            </div>
+
+            <div id="CU">
+                <h3>Contact Us</h3>
+                <p>Citicenter, Brgy. Pandan 2009 Angeles City, <br>Philippines</p>
+                <p>fgnmhs.seniorhs@depedangelescity.com</p>
+                <div>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="end">
+            <p>Copyright 2026 Francisco All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="enrollment.js"></script>
+</body>
+</html>
